@@ -6,7 +6,7 @@ SetCapsLockState "AlwaysOff"
 *CapsLock::Return
 
 ;+CapsLock toggles CapsLock state explicitly
-+CapsLock::
+#CapsLock::
 {
     currentState := GetKeyState("CapsLock", "T")
     SetCapsLockState !currentState  ; Toggle CapsLock state
