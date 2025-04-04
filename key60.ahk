@@ -53,6 +53,33 @@ SetCapsLockState "AlwaysOff"
     *-::sendNavKey("F11")
     *=::sendNavKey("F12")
 
+    ; --- Block all other letter keys ---
+    $b::Return
+    $c::Return
+    $e::Return
+    $f::Return
+    $g::Return
+    ; h is Home
+    ; i is Up
+    ; j is Left
+    ; k is Down
+    ; l is Right
+    $;::Return
+    ; m is Ctrl+Down
+    $n::Return
+    $o::Return
+    ; p is PgUp
+    $q::Return
+    $r::Return
+    ; s is Down
+    $t::Return
+    ; u is Ctrl+Up
+    $v::Return
+    ; w is Up
+    $x::Return
+    $y::Return
+    $z::Return
+
 #HotIf
 
 
