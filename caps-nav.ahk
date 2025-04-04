@@ -5,6 +5,13 @@
 SetCapsLockState "AlwaysOff"
 *CapsLock::Return
 
+;+CapsLock toggles CapsLock state explicitly
++CapsLock::
+{
+    currentState := GetKeyState("CapsLock", "T")
+    SetCapsLockState !currentState  ; Toggle CapsLock state
+}
+
 ; Activate hotkeys only when CapsLock is held
 #HotIf GetKeyState("CapsLock", "P")
     ; Arrow keys (WASD)
