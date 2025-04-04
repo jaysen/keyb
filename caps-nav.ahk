@@ -19,6 +19,12 @@ SetCapsLockState "AlwaysOff"
     *k::sendNavKey("Down")
     *l::sendNavKey("Right")
 
+    ; Home, End, PageUp, PageDown
+    *h::sendNavKey("Home")
+    *`;::sendNavKey("End")
+    *p::sendNavKey("PgUp")
+    */::sendNavKey("PgDn")
+
 #HotIf
 
 ; Function to handle modifiers and send keys
