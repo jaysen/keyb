@@ -28,7 +28,7 @@ SetCapsLockState "AlwaysOff"
 
     ; Home, End, PageUp, PageDown
     *h::sendNavKey("Home")
-    *`;::sendNavKey("End")
+    *'::sendNavKey("End")
     *p::sendNavKey("PgUp")
     */::sendNavKey("PgDn")
 
