@@ -52,22 +52,27 @@ global HybridVimEnabled := false
     *a::NavLib.MoveLeft()
     *s::NavLib.MoveDown()
     *d::NavLib.MoveRight()
+
     ; Arrow keys (IJKL)
     *i::NavLib.MoveUp()
     *j::NavLib.MoveLeft()
     *k::NavLib.MoveDown()
     *l::NavLib.MoveRight()
+
     ; Home, End, PageUp, PageDown
     *h::NavLib.MoveToLineStart()
     *'::NavLib.MoveToLineEnd()
     *p::NavLib.PageUp()
     */::NavLib.PageDown()
+
     ; Word navigation (with Shift modifier support)
     *,::NavLib.MoveWordBackward()
     *.::NavLib.MoveWordForward()
+
     ; Document navigation
     *u::NavLib.MoveToDocStart()
     *m::NavLib.MoveToDocEnd()
+
     ; Function keys F1 - F12
     *1::NavLib.SendFunctionKey(1)
     *2::NavLib.SendFunctionKey(2)
@@ -81,24 +86,25 @@ global HybridVimEnabled := false
     *0::NavLib.SendFunctionKey(10)
     *-::NavLib.SendFunctionKey(11)
     *=::NavLib.SendFunctionKey(12)
-    ; Block all other letter keys
+
+    ; Text manipulation (TextLib)
+    *g::TextLib.DeleteWord(true)        ; delete word forward
+    *f::TextLib.DeleteWord(false)       ; delete word backward
+    *y::TextLib.SelectLine()            ; select current line
+    `;::TextLib.SelectCurrentWord()     ; select current word
+    *z::TextLib.UppercaseSelection()    ; uppercase selected text
+    *c::TextLib.ChangeToLineEnd()       ; delete to line end
+
+    ; Block remaining unused keys
     $b::Return
-    $c::Return
     $e::Return
-    $f::Return
-    $g::Return
     $n::Return
     $q::Return
     $r::Return
     $t::Return
     $v::Return
-    $x::Return
-    $y::Return
-    $z::Return
-    ; Block remaining symbols
     $[::Return
     $]::Return
-    $;::Return
     $\::Return
 #HotIf
 

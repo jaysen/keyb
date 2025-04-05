@@ -68,10 +68,10 @@ SetCapsLockState "AlwaysOff"
     *=::NavLib.SendFunctionKey(12)
 
     ; Text manipulation (TextLib)
-    *f::TextLib.DeleteWord()            ; delete word forward
-    *g::TextLib.DeleteWord(false)       ; delete word backward
+    *g::TextLib.DeleteWord(true)        ; delete word forward
+    *f::TextLib.DeleteWord(false)       ; delete word backward
     *y::TextLib.SelectLine()            ; select current line
-    *x::TextLib.SelectCurrentWord()     ; select current word
+    `;::TextLib.SelectCurrentWord()     ; select current word
     *z::TextLib.UppercaseSelection()    ; uppercase selected text
     *c::TextLib.ChangeToLineEnd()       ; delete to line end
 
@@ -85,6 +85,12 @@ SetCapsLockState "AlwaysOff"
     $v::Return
     $[::Return
     $]::Return
-    $;::Return
     $\::Return
 #HotIf
+
+; map CapsLock+Backspace to Delete :
+CapsLock & Backspace::
+{
+    Send("{Delete}")
+}
+
