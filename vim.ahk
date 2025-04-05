@@ -203,6 +203,7 @@ Escape:: {
         VimLib.SwitchToNormal()
     }
     c:: {
+        ; Cut the selected text (Ctrl+X), switch to Insert mode, and restore the clipboard
         VimLib.SaveClipboard()
         Send("^x")
         VimLib.SwitchToInsert()
@@ -211,6 +212,7 @@ Escape:: {
     
     ; Indentation
     >:: {
+        ; Indent the selected text by adding a tab character at the beginning of each line
         VimLib.SaveClipboard()
         Send("^c")
         indented := RegExReplace(A_Clipboard, "m)^", "`t")
@@ -220,6 +222,7 @@ Escape:: {
         VimLib.SwitchToNormal()
     }
     <:: {
+        ; Unindent the selected text by removing a tab character from the beginning of each line
         VimLib.SaveClipboard()
         Send("^c")
         unindented := RegExReplace(A_Clipboard, "m)^\t", "")
@@ -231,6 +234,7 @@ Escape:: {
     
     ; Case changing
     u:: {
+        ; Convert the selected text to lowercase
         VimLib.SaveClipboard()
         Send("^c")
         A_Clipboard := Format("{:L}", A_Clipboard)
@@ -239,6 +243,7 @@ Escape:: {
         VimLib.SwitchToNormal()
     }
     +u:: {
+        ; Convert the selected text to uppercase
         VimLib.SaveClipboard()
         Send("^c")
         A_Clipboard := Format("{:U}", A_Clipboard)
