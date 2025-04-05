@@ -79,4 +79,37 @@ class VimLib {
         Send "^v"
         KeybLib.RestoreClipboard()
     }
+    
+    ; --- Vim Text Operations ---
+    static ChangeToLineEnd() {
+        KeybLib.SaveClipboard()
+        Send "+{End}^x"
+        this.SwitchToInsert()
+        KeybLib.RestoreClipboard()
+    }
+    
+    static DeleteWord() {
+        KeybLib.SaveClipboard()
+        Send "^+{Right}^x"
+        KeybLib.RestoreClipboard()
+    }
+    
+    static ChangeWord() {
+        KeybLib.SaveClipboard()
+        Send "^+{Right}^x"
+        this.SwitchToInsert()
+        KeybLib.RestoreClipboard()
+    }
+    
+    static OpenLineBelow() {
+        NavLib.MoveToLineEnd()
+        Send "{Enter}"
+        this.SwitchToInsert()
+    }
+    
+    static OpenLineAbove() {
+        NavLib.MoveToLineStart()
+        Send "{Enter}{Up}"
+        this.SwitchToInsert()
+    }
 }
