@@ -1,6 +1,9 @@
 #Requires AutoHotkey v2.0+
 ; --- Shared Library for AutoHotkey Keyboard Enhancement Scripts ---
 
+; Include navigation library
+#Include %A_ScriptDir%\nav_lib.ahk
+
 class KeybLib {
     ; --- State Management ---
     static NavModeEnabled := false
@@ -59,22 +62,13 @@ class KeybLib {
     }
     
     ; --- Navigation Functions ---
+    ; These functions now delegate to NavLib
     static sendNavKey(key) {
-        if GetKeyState("Shift", "P")
-            Send "+{" key "}"
-        else if GetKeyState("Ctrl", "P")
-            Send "^{" key "}"
-        else if GetKeyState("Alt", "P")
-            Send "!{" key "}"
-        else
-            Send "{" key "}"
+        NavLib.sendNavKey(key)
     }
     
     static sendCtrlNav(direction) {
-        if GetKeyState("Shift", "P")
-            Send "^+{" direction "}"
-        else
-            Send "^{" direction "}"
+        NavLib.sendCtrlNav(direction)
     }
     
     ; --- Toggle Functions ---

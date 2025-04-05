@@ -2,7 +2,7 @@
 ; --- Shared Library for Vim Functionality ---
 ; Extends keyb_lib.ahk with Vim-specific functionality
 
-; Include the base keyboard library
+; Include the base keyboard library (which includes nav_lib.ahk)
 #Include %A_ScriptDir%\keyb_lib.ahk
 
 class VimLib {
@@ -55,25 +55,28 @@ class VimLib {
     ; --- Common Vim Commands ---
     static DeleteLine() {
         KeybLib.SaveClipboard()
-        Send("{Home}+{End}^x")
+        NavLib.MoveToLineStart()
+        Send "+{End}^x"
         KeybLib.RestoreClipboard()
     }
     
     static YankLine() {
         KeybLib.SaveClipboard()
-        Send("{Home}+{End}^c{Right}")
+        NavLib.MoveToLineStart()
+        Send "+{End}^c{Right}"
         KeybLib.RestoreClipboard()
     }
     
     static Paste() {
         KeybLib.SaveClipboard()
-        Send("^v")
+        Send "^v"
         KeybLib.RestoreClipboard()
     }
     
     static PasteBefore() {
         KeybLib.SaveClipboard()
-        Send("{Left}^v")
+        NavLib.MoveLeft()
+        Send "^v"
         KeybLib.RestoreClipboard()
     }
 }
