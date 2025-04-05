@@ -97,7 +97,7 @@ SetCapsLockState "AlwaysOff"
     ; u is Ctrl+Up
     $v::Return
     ; w is Up
-    $x::Return
+    $x::Return  
     $y::Return
     $z::Return
     
@@ -113,12 +113,12 @@ SetCapsLockState "AlwaysOff"
     ; ; is End
 
     ; --- Block other common keys ---
-    $Space::Return
-    $Tab::Return
-    $Enter::Return
-    $BackSpace::Return
-    $Delete::Return
-    $Escape::Return
+    ; $Space::Return
+    ; $Tab::Return
+    ; $Enter::Return
+    ; $BackSpace::Return
+    ; $Delete::Return
+    ; $Escape::Return
     
     ; --- Block all other printable characters ---
     $!::Return
