@@ -70,8 +70,8 @@ global HybridVimEnabled := false
     *.::NavLib.MoveWordForward()
 
     ; Document navigation
-    *u::NavLib.MoveToDocStart()
-    *m::NavLib.MoveToDocEnd()
+    *u::NavLib.sendCtrlNav("Up")
+    *m::NavLib.sendCtrlNav("Down")
 
     ; Function keys F1 - F12
     *1::NavLib.SendFunctionKey(1)
