@@ -2,7 +2,7 @@
 ; --- Text Manipulation Library ---
 ; Word/line/block operations with clipboard safety
 
-#Include %A_ScriptDir%\nav_lib.ahk
+#Include .\nav_lib.ahk
 
 class TextLib {
     ; --- Internal clipboard cache ---

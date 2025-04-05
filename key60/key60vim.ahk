@@ -3,8 +3,10 @@
 ; --- Combines custom navigation with basic Vim commands ---
 
 ; Include shared libraries
-#Include %A_ScriptDir%\keyb_lib.ahk
-#Include %A_ScriptDir%\vim_lib.ahk
+#Include %A_ScriptDir%\..\shared\keyb_lib.ahk
+#Include %A_ScriptDir%\..\shared\vim_lib.ahk
+#Include %A_ScriptDir%\..\shared\nav_lib.ahk
+#Include %A_ScriptDir%\..\shared\text_lib.ahk
 #SingleInstance Force
 
 ; Prevent CapsLock from toggling

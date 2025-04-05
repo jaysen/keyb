@@ -2,7 +2,7 @@
 ; --- Shared Library for AutoHotkey Keyboard Enhancement Scripts ---
 
 ; Include navigation library
-#Include %A_ScriptDir%\nav_lib.ahk
+#Include .\nav_lib.ahk
 
 class KeybLib {
     ; --- State Management ---

@@ -3,7 +3,9 @@
 ; A more comprehensive Vim emulation for Windows applications
 
 ; Include vim library (which also includes keyb_lib)
-#Include %A_ScriptDir%\vim_lib.ahk
+#Include %A_ScriptDir%\..\shared\vim_lib.ahk
+#Include %A_ScriptDir%\..\shared\nav_lib.ahk 
+#Include %A_ScriptDir%\..\shared\text_lib.ahk
 #SingleInstance Force
 
 ; Initialize Vim in Normal mode
@@ -126,11 +128,11 @@ Escape:: {
     /:: Send("^f")
     *:: {
         ; Search for word under cursor
-        VimLib.SaveClipboard()
+        TextLib.SaveClipboard()
         Send("^{Left}+^{Right}^c")
         Send("^f")
         Send("^v")
-        VimLib.RestoreClipboard()
+        TextLib.RestoreClipboard()
     }
     
     ; Other

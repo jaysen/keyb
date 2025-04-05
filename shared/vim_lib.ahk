@@ -3,7 +3,7 @@
 ; Extends keyb_lib.ahk with Vim-specific functionality
 
 ; Include the base keyboard library (which includes nav_lib.ahk)
-#Include %A_ScriptDir%\keyb_lib.ahk
+#Include .\keyb_lib.ahk
 
 class VimLib {
     ; --- Mode Tracking ---
