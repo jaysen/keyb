@@ -1,9 +1,6 @@
 #Requires AutoHotkey v2.0+
 ; --- Shared Library for AutoHotkey Keyboard Enhancement Scripts ---
 
-; Include navigation library
-#Include .\nav_lib.ahk
-
 class KeybLib {
     ; --- State Management ---
     static NavModeEnabled := false
@@ -48,27 +45,6 @@ class KeybLib {
     static HideStatusBar() {
         this.StatusGui.Destroy()
         this.StatusBarVisible := false
-    }
-    
-    ; --- Clipboard Management ---
-    static SaveClipboard() {
-        this.OldClipboard := ClipboardAll()
-        A_Clipboard := ""
-    }
-    
-    static RestoreClipboard() {
-        A_Clipboard := this.OldClipboard
-        this.OldClipboard := ""
-    }
-    
-    ; --- Navigation Functions ---
-    ; These functions now delegate to NavLib
-    static sendNavKey(key) {
-        NavLib.sendNavKey(key)
-    }
-    
-    static sendCtrlNav(direction) {
-        NavLib.sendCtrlNav(direction)
     }
     
     ; --- Toggle Functions ---
