@@ -39,12 +39,23 @@ KeybLib.ToggleNavMode()
     ; Otherwise do nothing, allowing CapsLock to be used as a modifier when held
 }
 
-; Activate hotkeys when CapsLock is held OR NavMode is enabled
+; Escape exits navigation mode
+; Note: This is only active when NavMode is enabled
 #HotIf KeybLib.NavModeEnabled
     ; Escape exits navigation mode
     Escape::
     {
         KeybLib.ToggleNavMode()
+    }
+#HotIf
+
+; Escape exits selection mode
+; Note: This is only active when SelectionMode is enabled
+#HotIf KeybLib.SelectionModeEnabled
+    ; Escape exits selection mode
+    Escape::
+    {
+        KeybLib.ToggleSelectionMode()
     }
 #HotIf
 
@@ -77,25 +88,36 @@ KeybLib.ToggleNavMode()
     *m::NavLib.sendCtrlNav("Down")
 
     ; Text manipulation (Delete, Backspace, etc.)
-    *z::Send("{BackSpace}")
-    *x::Send("{Delete}")
+    ; *z::Send("{BackSpace}")
+    ; *x::Send("{Delete}")
     ; Text manipulation (TextLib)
-    *c::TextLib.DeleteWord(false)       ; delete word backward
-    *v::TextLib.DeleteWord(true)        ; delete word forward
-    *r::TextLib.ChangeToLineEnd()       ; delete to line end
-    *t::TextLib.UppercaseSelection()    ; uppercase selected text
+    ; *c::TextLib.DeleteWord(false)       ; delete word backward
+    ; *v::TextLib.DeleteWord(true)        ; delete word forward
+    ; *r::TextLib.ChangeToLineEnd()       ; delete to line end
+    ; *t::TextLib.UppercaseSelection()    ; uppercase selected text
+
     *y::TextLib.SelectLine()            ; select current line
     *f::TextLib.SelectCurrentWord()     ; select current word
     *'::TextLib.SelectCurrentWord()     ; select current word
 
-    ; Block remaining unused keys
-    $q::Return
-    $e::Return
+    ; *z::TextLib.ExpandSelectionByWordBack()
+    ; *x::TextLib.ExpandSelectionByCharBack()
+    ; *c::TextLib.ExpandSelectionByWordForward()  
+    ; *v::TextLib.ExpandSelectionByCharForward()
+
+    *e::TextLib.ExpandSelectionByWordBack()
+    *r::TextLib.ExpandSelectionByWordForward()  
+    *c::TextLib.ExpandSelectionByCharBack()
+    *v::TextLib.ExpandSelectionByCharForward()
+
+    ; Block remaining unused keys         
+    ;$q::Return
+    ;$e::Return
     ;$r::Return
     ;$t::Return
-    $b::Return
-    $n::Return
     ;$v::Return
+    ;$b::Return
+    $n::Return
     $[::Return
     $]::Return
     $\::Return
@@ -126,3 +148,58 @@ CapsLock & Backspace::
 {
     Send("{Delete}")
 }
+
+
+
+; Double-tap Left Shift to toggle selection mode
+; Note: ~LShift means the key's native function still works
+~LShift::
+{
+    ; Check if this is a double tap (400ms window)
+    if (A_PriorHotkey = "~LShift" && A_TimeSincePriorHotkey < 400) {
+        KeybLib.ToggleSelectionMode()
+    }
+}
+
+; Selection mode hotkeys
+#HotIf KeybLib.SelectionModeEnabled
+    ; Arrow-based selection with IJKL
+    i::TextLib.ExpandSelectionUp()
+    j::TextLib.ExpandSelectionByCharBack()
+    k::TextLib.ExpandSelectionDown()
+    l::TextLib.ExpandSelectionByCharForward()
+    
+    ; Word-based selection with comma/period
+    ,::TextLib.ExpandSelectionByWordBack()
+    .::TextLib.ExpandSelectionByWordForward()
+    
+    ; Line-boundary selection with h/semicolon
+    h::TextLib.ExpandSelectionToLineStart()
+    `;::TextLib.ExpandSelectionToLineEnd()
+    
+    ; Additional useful selection operations
+    u::TextLib.ExpandSelectionUp(5)     ; Select 5 lines up
+    m::TextLib.ExpandSelectionDown(5)   ; Select 5 lines down
+    y::TextLib.SelectLine()             ; Select entire line
+    w::TextLib.SelectCurrentWord()      ; Select current word
+    
+    ; Clipboard operations that maintain selection mode
+    c::
+    {
+        KeybLib.SaveClipboard()
+        Send "^c"
+        KeybLib.RestoreClipboard()
+        KeybLib.ShowTooltip("Selection copied")
+    }
+    
+    x::
+    {
+        KeybLib.SaveClipboard()
+        Send "^x"
+        KeybLib.RestoreClipboard()
+        KeybLib.ToggleSelectionMode()   ; Exit selection mode after cutting
+    }
+    
+    ; Text manipulation that maintains selection
+    +z::TextLib.UppercaseSelection()    ; Uppercase selected text
+#HotIf

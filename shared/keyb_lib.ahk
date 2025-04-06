@@ -5,6 +5,7 @@ class KeybLib {
     ; --- State Management ---
     static NavModeEnabled := false
     static VimModeEnabled := false
+    static SelectionModeEnabled := false
     
     ; --- Mode Display Management ---
     static StatusBarVisible := false
@@ -31,6 +32,8 @@ class KeybLib {
             modeColor := "FF0000"
         else if (mode = "Navigation")
             modeColor := "00FFFF"
+        else if (mode = "Selection")
+            modeColor := "FF00FF"  ; Purple for selection mode
         
         this.StatusGui := Gui("+AlwaysOnTop -Caption +ToolWindow")
         this.StatusGui.BackColor := modeColor
@@ -62,6 +65,24 @@ class KeybLib {
             this.HideStatusBar()
         }
         return this.NavModeEnabled
+    }
+
+       
+    ; --- Toggle Functions ---
+    static ToggleSelectionMode() {
+        this.SelectionModeEnabled := !this.SelectionModeEnabled
+        
+        ; Disable other modes if selection mode is enabled
+        if (this.SelectionModeEnabled) {
+            this.NavModeEnabled := false
+            this.VimModeEnabled := false
+            this.ShowTooltip("Selection Mode: ON")
+            this.ShowModeStatus("Selection", true)
+        } else {
+            this.ShowTooltip("Selection Mode: OFF")
+            this.HideStatusBar()
+        }
+        return this.SelectionModeEnabled
     }
     
     static ToggleVimMode() {
