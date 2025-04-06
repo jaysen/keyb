@@ -24,6 +24,21 @@ class NavLib {
     static MoveDown() {
         this.sendKey("Down")
     }
+
+        ; --- Multi-line Movement ---
+    ; Moves the cursor up by specified number of lines
+    static MoveUpLines(lineCount := 1) {
+        Loop lineCount {
+            this.sendKey("Up")
+        }
+    }
+
+    ; Moves the cursor down by specified number of lines
+    static MoveDownLines(lineCount := 1) {
+        Loop lineCount {
+            this.sendKey("Down")
+        }
+    }
     
     static MoveLeft() {
         this.sendKey("Left")
@@ -81,21 +96,6 @@ class NavLib {
             Send "^{End}"
     }
     
-
-    ; --- Multi-line Movement ---
-    ; Moves the cursor up by specified number of lines
-    static MoveUpLines(lineCount := 1) {
-        Loop lineCount {
-            Send "{Up}"
-        }
-    }
-
-    ; Moves the cursor down by specified number of lines
-    static MoveDownLines(lineCount := 1) {
-        Loop lineCount {
-            Send "{Down}"
-        }
-    }
 
     ; --- Function Key Navigation ---
     static SendFunctionKey(number) {
