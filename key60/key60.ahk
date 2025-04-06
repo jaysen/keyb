@@ -34,7 +34,7 @@ SetCapsLockState "AlwaysOff"
         KeybLib.ResetCapsLockTapCount()
     } else if (KeybLib.NavModeEnabled) {
         ; Single tap while in nav mode - exit nav mode
-KeybLib.ToggleNavMode()
+        KeybLib.ToggleNavMode()
     }
     ; Otherwise do nothing, allowing CapsLock to be used as a modifier when held
 }
@@ -151,12 +151,12 @@ CapsLock & Backspace::
 
 
 
-; Double-tap Left Shift to toggle selection mode
-; Note: ~LShift means the key's native function still works
-~LShift::
+; Double-tap Left Alt to toggle selection mode
+; Note: ~LAlt means the key's native function still works
+~LAlt::
 {
     ; Check if this is a double tap (400ms window)
-    if (A_PriorHotkey = "~LShift" && A_TimeSincePriorHotkey < 400) {
+    if (A_PriorHotkey = "~LAlt" && A_TimeSincePriorHotkey < 400) {
         KeybLib.ToggleSelectionMode()
     }
 }
