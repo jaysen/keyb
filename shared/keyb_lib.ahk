@@ -15,11 +15,11 @@ class KeybLib {
     
     ; --- Mode Display Functions ---
     static ShowTooltip(message, duration := 1500) {
-        ToolTip message, 10, 10
+        ToolTip message, 10, 10 
         SetTimer () => ToolTip(), -duration
     }
     
-    static ShowModeStatus(mode) {
+    static ShowModeStatus(mode, persistent := false) {
         if (this.StatusBarVisible) {
             this.StatusGui.Destroy()
         }
@@ -39,7 +39,10 @@ class KeybLib {
         this.StatusGui.Show("NoActivate y0")
         this.StatusBarVisible := true
         
-        SetTimer () => this.HideStatusBar(), -1500
+        ; Only set timer to hide if not persistent
+        if (!persistent) {
+            SetTimer () => this.HideStatusBar(), -1500
+        }
     }
     
     static HideStatusBar() {
@@ -48,14 +51,15 @@ class KeybLib {
     }
     
     ; --- Toggle Functions ---
-    static ToggleNavMode() {
+    static ToggleNavMode(persistent := false) {
         this.NavModeEnabled := !this.NavModeEnabled
         if (this.NavModeEnabled) {
             this.VimModeEnabled := false
             this.ShowTooltip("Navigation Mode: ON")
-            this.ShowModeStatus("Navigation")
+            this.ShowModeStatus("Navigation", persistent)
         } else {
             this.ShowTooltip("Navigation Mode: OFF")
+            this.HideStatusBar()
         }
         return this.NavModeEnabled
     }

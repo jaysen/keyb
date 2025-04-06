@@ -18,7 +18,7 @@ global HybridVimEnabled := false
 ; Win+J toggles navigation mode
 #j::
 {
-    KeybLib.ToggleNavMode()
+    KeybLib.ToggleNavMode(true)
     if (KeybLib.NavModeEnabled) {
         HybridVimEnabled := false
         VimLib.SwitchToNormal()

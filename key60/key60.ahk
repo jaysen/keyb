@@ -16,7 +16,7 @@ SetCapsLockState "AlwaysOff"
 ; Win+J toggles navigation mode
 #j::
 {
-    KeybLib.ToggleNavMode()
+    KeybLib.ToggleNavMode(true)
 }
 
 ; Handle CapsLock tap (without modifiers)
@@ -29,20 +29,14 @@ SetCapsLockState "AlwaysOff"
     if (KeybLib.DetectCapsLockDoubleTap()) {
         ; Double tap detected, toggle navigation mode on
         if (!KeybLib.NavModeEnabled) {
-            KeybLib.ToggleNavMode()
+            KeybLib.ToggleNavMode(true)
         }
         KeybLib.ResetCapsLockTapCount()
     } else if (KeybLib.NavModeEnabled) {
         ; Single tap while in nav mode - exit nav mode
-        KeybLib.ToggleNavMode()
+KeybLib.ToggleNavMode()
     }
     ; Otherwise do nothing, allowing CapsLock to be used as a modifier when held
-}
-
-; Win+CapsLock toggles physical CapsLock state
-#CapsLock::
-{
-    KeybLib.ToggleCapsLock()
 }
 
 ; Activate hotkeys when CapsLock is held OR NavMode is enabled
@@ -111,6 +105,12 @@ SetCapsLockState "AlwaysOff"
     *-::NavLib.SendFunctionKey(11)
     *=::NavLib.SendFunctionKey(12)
 #HotIf
+
+; Win+CapsLock toggles physical CapsLock state
+#CapsLock::
+{
+    KeybLib.ToggleCapsLock()
+}
 
 ; map CapsLock+Backspace to Delete :
 CapsLock & Backspace::
