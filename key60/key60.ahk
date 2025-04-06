@@ -40,6 +40,15 @@ KeybLib.ToggleNavMode()
 }
 
 ; Activate hotkeys when CapsLock is held OR NavMode is enabled
+#HotIf KeybLib.NavModeEnabled
+    ; Escape exits navigation mode
+    Escape::
+    {
+        KeybLib.ToggleNavMode()
+    }
+#HotIf
+
+; Activate hotkeys when CapsLock is held OR NavMode is enabled
 #HotIf GetKeyState("CapsLock", "P") or KeybLib.NavModeEnabled
     ; Arrow keys (WASD)
     *w::NavLib.MoveUp()

@@ -59,11 +59,13 @@ global HybridVimEnabled := false
     }
 }
 
-; Win+CapsLock toggles physical CapsLock state
-#CapsLock::
-{
-    KeybLib.ToggleCapsLock()
-}
+#HotIf KeybLib.NavModeEnabled and !HybridVimEnabled
+    ; Escape exits navigation mode
+    Escape::
+    {
+        KeybLib.ToggleNavMode()
+    }
+#HotIf
 
 ; --- Navigation Mode Hotkeys ---
 #HotIf (GetKeyState("CapsLock", "P") or KeybLib.NavModeEnabled) and !HybridVimEnabled
@@ -251,4 +253,10 @@ global HybridVimEnabled := false
 CapsLock & Backspace::
 {
     Send("{Delete}")
+}
+
+; Win+CapsLock toggles physical CapsLock state
+#CapsLock::
+{
+    KeybLib.ToggleCapsLock()
 }
