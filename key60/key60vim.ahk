@@ -92,8 +92,12 @@ global HybridVimEnabled := false
     *.::NavLib.MoveWordForward()
 
     ; Document navigation
-    *u::NavLib.MoveUpLines(5)
-    *m::NavLib.MoveDownLines(5)
+    *u::NavLib.MoveUpLines(2)
+    *m::NavLib.MoveDownLines(2)
+    *y::NavLib.MoveUpLines(5)
+    *n::NavLib.MoveDownLines(5)   
+    *t::NavLib.MoveUpLines(10)
+    *b::NavLib.MoveDownLines(10)   
 
     ; Text manipulation (Delete, Backspace, etc.)
     ; *z::Send("{BackSpace}")
@@ -121,8 +125,7 @@ global HybridVimEnabled := false
     *x::TextLib.ExpandSelectionToLineEnd()     
     *z::TextLib.ExpandSelectionToLineStart()     
     *'::TextLib.ExpandSelectionToLineEnd()     
-    *y::TextLib.ExpandSelectionUp(5)     
-    *n::TextLib.ExpandSelectionDown(5)     
+  
     $[::TextLib.ExpandSelectionByWordBack()
     $]::TextLib.ExpandSelectionByWordForward()
 
