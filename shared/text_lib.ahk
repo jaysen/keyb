@@ -21,16 +21,54 @@ class TextLib {
         this._oldClipboard := ""
     }
 
-    ; --- Word Deletion ---
-    ; Deletes one word forward (default) or backward, preserving the clipboard
-    static DeleteWord(forward := true) {
-        this.SaveClipboard()
-        if forward
-            Send "^+{Right}^x"
-        else
-            Send "^+{Left}^x"
-        this.RestoreClipboard()
+    ; --- Character Selection Expansion ---
+    ; Expands the current selection one character backward
+    static ExpandSelectionByCharBack() {
+        Send "+{Left}"
     }
+
+    ; Expands the current selection one character forward
+    static ExpandSelectionByCharForward() {
+        Send "+{Right}"
+    }
+
+    ; --- Word Selection Expansion ---
+    ; Expands the current selection one word backward
+    static ExpandSelectionByWordBack() {
+        Send "+^{Left}"
+    }
+
+    ; Expands the current selection one word forward
+    static ExpandSelectionByWordForward() {
+        Send "+^{Right}"
+    }
+
+    ; --- Line-boundary Selection Expansion ---
+    ; Expands the current selection to the start of the current line
+    static ExpandSelectionToLineStart() {
+        Send "+{Home}"
+    }
+
+    ; Expands the current selection to the end of the current line
+    static ExpandSelectionToLineEnd() {
+        Send "+{End}"
+    }
+
+    ; --- Line-based Selection Expansion ---
+    ; Expands the current selection by specified number of lines upward
+    static ExpandSelectionUp(lineCount := 1) {
+        Loop lineCount {
+            Send "+{Up}"
+        }
+    }
+
+    ; Expands the current selection by specified number of lines downward
+    static ExpandSelectionDown(lineCount := 1) {
+        Loop lineCount {
+            Send "+{Down}"
+        }
+    }    
+
 
     ; --- Word Selection ---
     ; Selects the current word by moving to its start and expanding to end
@@ -45,6 +83,19 @@ class TextLib {
         Send "+{End}"
     }
 
+
+    ; ==== Text Deletion/Transformation Functions ====
+
+    ; --- Word Deletion ---
+    ; Deletes one word forward (default) or backward, preserving the clipboard
+    static DeleteWord(forward := true) {
+        this.SaveClipboard()
+        if forward
+            Send "^+{Right}^x"
+        else
+            Send "^+{Left}^x"
+        this.RestoreClipboard()
+    }
     ; --- Change to End of Line ---
     ; Deletes everything from cursor to end of line, clipboard-safe
     static ChangeToLineEnd() {
