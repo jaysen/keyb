@@ -83,7 +83,7 @@ global HybridVimEnabled := false
 
     ; Home, End, PageUp, PageDown
     *h::NavLib.MoveToLineStart()
-    *'::NavLib.MoveToLineEnd()
+    `;::NavLib.MoveToLineEnd()
     *p::NavLib.PageUp()
     */::NavLib.PageDown()
 
@@ -92,31 +92,51 @@ global HybridVimEnabled := false
     *.::NavLib.MoveWordForward()
 
     ; Document navigation
-    *u::NavLib.sendCtrlNav("Up")
-    *m::NavLib.sendCtrlNav("Down")
+    *u::NavLib.MoveUpLines(5)
+    *m::NavLib.MoveDownLines(5)
 
     ; Text manipulation (Delete, Backspace, etc.)
-    *z::Send("{BackSpace}")
-    *x::Send("{Delete}")
+    ; *z::Send("{BackSpace}")
+    ; *x::Send("{Delete}")
     ; Text manipulation (TextLib)
-    *c::TextLib.DeleteWord(false)       ; delete word backward
-    *v::TextLib.DeleteWord(true)        ; delete word forward
-    *r::TextLib.ChangeToLineEnd()       ; delete to line end
-    *t::TextLib.UppercaseSelection()    ; uppercase selected text
-    *y::TextLib.SelectLine()            ; select current line
-    *'::TextLib.SelectCurrentWord()     ; select current word
+    ; *c::TextLib.DeleteWord(false)       ; delete word backward
+    ; *v::TextLib.DeleteWord(true)        ; delete word forward
+    ; *r::TextLib.ChangeToLineEnd()       ; delete to line end
+    ; *t::TextLib.UppercaseSelection()    ; uppercase selected text
+
+    *f::TextLib.SelectCurrentWord()     ; select current word
+    *g::TextLib.SelectLine()            ; select current line
+    *q::TextLib.SelectLine()            ; select current line
+
+    ; *z::TextLib.ExpandSelectionByWordBack()
+    ; *x::TextLib.ExpandSelectionByCharBack()
+    ; *c::TextLib.ExpandSelectionByWordForward()  
+    ; *v::TextLib.ExpandSelectionByCharForward()
+
+    *e::TextLib.ExpandSelectionByWordBack()
+    *r::TextLib.ExpandSelectionByWordForward()  
+    *c::TextLib.ExpandSelectionByCharBack()
+    *v::TextLib.ExpandSelectionByCharForward()
+
+    *x::TextLib.ExpandSelectionToLineEnd()     
+    *z::TextLib.ExpandSelectionToLineStart()     
+    *'::TextLib.ExpandSelectionToLineEnd()     
+    *y::TextLib.ExpandSelectionUp(5)     
+    *n::TextLib.ExpandSelectionDown(5)     
+    $[::TextLib.ExpandSelectionByWordBack()
+    $]::TextLib.ExpandSelectionByWordForward()
 
     ; Block remaining unused keys
-    $q::Return
-    $e::Return
+    ;$q::Return
+    ;$e::Return
     ;$r::Return
     ;$t::Return
-    $b::Return
-    $n::Return
     ;$v::Return
-    $[::Return
-    $]::Return
-    $\::Return
+    ;$b::Return
+    ;$n::Return
+    ;$[::Return
+    ;$]::Return
+    $\::TextLib.SelectLine()
 
     ; Function keys F1 - F12
     *1::NavLib.SendFunctionKey(1)
@@ -130,7 +150,7 @@ global HybridVimEnabled := false
     *9::NavLib.SendFunctionKey(9)
     *0::NavLib.SendFunctionKey(10)
     *-::NavLib.SendFunctionKey(11)
-    *=::NavLib.SendFunctionKey(12)  
+    *=::NavLib.SendFunctionKey(12)
 #HotIf
 
 ; --- Hybrid Vim Mode Hotkeys ---
