@@ -77,4 +77,32 @@ class KeybLib {
         SetCapsLockState !currentState
         return !currentState
     }
+
+    ; --- Double-Tap Detection ---
+    static lastCapsLockTime := 0
+    static capsLockTapCount := 0
+    static doubleTapThreshold := 400  ; milliseconds
+
+    ; Detects double-tapping of CapsLock
+    static DetectCapsLockDoubleTap() {
+        currentTime := A_TickCount
+        timeSinceLast := currentTime - this.lastCapsLockTime
+        
+        ; Reset tap count if it's been too long since last tap
+        if (timeSinceLast > this.doubleTapThreshold) {
+            this.capsLockTapCount := 1
+        } else {
+            this.capsLockTapCount += 1
+        }
+        
+        this.lastCapsLockTime := currentTime
+        
+        ; Return true if double-tapped
+        return (this.capsLockTapCount >= 2)
+    }
+
+    ; Reset the tap counter (used when processing a successful double-tap)
+    static ResetCapsLockTapCount() {
+        this.capsLockTapCount := 0
+    }
 }

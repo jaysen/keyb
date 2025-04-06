@@ -19,6 +19,26 @@ SetCapsLockState "AlwaysOff"
     KeybLib.ToggleNavMode()
 }
 
+; Handle CapsLock tap (without modifiers)
+*CapsLock::
+{
+    ; Wait for the key to be released
+    KeyWait "CapsLock"
+    
+    ; Check if it was a double-tap
+    if (KeybLib.DetectCapsLockDoubleTap()) {
+        ; Double tap detected, toggle navigation mode on
+        if (!KeybLib.NavModeEnabled) {
+            KeybLib.ToggleNavMode()
+        }
+        KeybLib.ResetCapsLockTapCount()
+    } else if (KeybLib.NavModeEnabled) {
+        ; Single tap while in nav mode - exit nav mode
+        KeybLib.ToggleNavMode()
+    }
+    ; Otherwise do nothing, allowing CapsLock to be used as a modifier when held
+}
+
 ; Win+CapsLock toggles physical CapsLock state
 #CapsLock::
 {
