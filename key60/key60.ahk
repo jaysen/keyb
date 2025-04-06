@@ -34,7 +34,7 @@ SetCapsLockState "AlwaysOff"
         KeybLib.ResetCapsLockTapCount()
     } else if (KeybLib.NavModeEnabled) {
         ; Single tap while in nav mode - exit nav mode
-KeybLib.ToggleNavMode()
+        KeybLib.ToggleNavMode()
     }
     ; Otherwise do nothing, allowing CapsLock to be used as a modifier when held
 }

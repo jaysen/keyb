@@ -138,7 +138,7 @@ Escape:: {
     ; Other
     ; Toggle case
     ~:: {
-        VimLib.SaveClipboard()
+        TextLib.SaveClipboard()
         Send("{Right}+{Left}^c")
         clipContent := A_Clipboard
         if (clipContent == Format("{:U}", clipContent))
