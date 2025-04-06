@@ -73,6 +73,29 @@ global HybridVimEnabled := false
     *u::NavLib.sendCtrlNav("Up")
     *m::NavLib.sendCtrlNav("Down")
 
+    ; Text manipulation (Delete, Backspace, etc.)
+    *z::Send("{BackSpace}")
+    *x::Send("{Delete}")
+    ; Text manipulation (TextLib)
+    *c::TextLib.DeleteWord(false)       ; delete word backward
+    *v::TextLib.DeleteWord(true)        ; delete word forward
+    *r::TextLib.ChangeToLineEnd()       ; delete to line end
+    *t::TextLib.UppercaseSelection()    ; uppercase selected text
+    *y::TextLib.SelectLine()            ; select current line
+    *'::TextLib.SelectCurrentWord()     ; select current word
+
+    ; Block remaining unused keys
+    $q::Return
+    $e::Return
+    ;$r::Return
+    ;$t::Return
+    $b::Return
+    $n::Return
+    ;$v::Return
+    $[::Return
+    $]::Return
+    $\::Return
+
     ; Function keys F1 - F12
     *1::NavLib.SendFunctionKey(1)
     *2::NavLib.SendFunctionKey(2)
@@ -86,26 +109,6 @@ global HybridVimEnabled := false
     *0::NavLib.SendFunctionKey(10)
     *-::NavLib.SendFunctionKey(11)
     *=::NavLib.SendFunctionKey(12)
-
-    ; Text manipulation (TextLib)
-    *g::TextLib.DeleteWord(true)        ; delete word forward
-    *f::TextLib.DeleteWord(false)       ; delete word backward
-    *y::TextLib.SelectLine()            ; select current line
-    `;::TextLib.SelectCurrentWord()     ; select current word
-    *z::TextLib.UppercaseSelection()    ; uppercase selected text
-    *c::TextLib.ChangeToLineEnd()       ; delete to line end
-
-    ; Block remaining unused keys
-    $b::Return
-    $e::Return
-    $n::Return
-    $q::Return
-    $r::Return
-    $t::Return
-    $v::Return
-    $[::Return
-    $]::Return
-    $\::Return
 #HotIf
 
 ; --- Hybrid Vim Mode Hotkeys ---
@@ -222,3 +225,10 @@ global HybridVimEnabled := false
         VimLib.SwitchToNormal()
     }
 #HotIf
+
+
+; map CapsLock+Backspace to Delete :
+CapsLock & Backspace::
+{
+    Send("{Delete}")
+}
