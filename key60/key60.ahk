@@ -115,12 +115,14 @@ SetCapsLockState "AlwaysOff"
     ;$e::Return
     ;$r::Return
     ;$t::Return
+    $o::Return
     ;$v::Return
     ;$b::Return
     ;$n::Return
     ;$[::Return
     ;$]::Return
     $\::TextLib.SelectLine()
+
 
     ; Function keys F1 - F12
     *1::NavLib.SendFunctionKey(1)
@@ -145,6 +147,11 @@ SetCapsLockState "AlwaysOff"
 
 ; map CapsLock+Backspace to Delete :
 CapsLock & Backspace::
+{
+    Send("{Delete}")
+}
+
+CapsLock & q::
 {
     Send("{Delete}")
 }

@@ -134,6 +134,7 @@ global HybridVimEnabled := false
     ;$e::Return
     ;$r::Return
     ;$t::Return
+    $o::Return
     ;$v::Return
     ;$b::Return
     ;$n::Return
@@ -282,4 +283,9 @@ CapsLock & Backspace::
 #CapsLock::
 {
     KeybLib.ToggleCapsLock()
+}
+
+CapsLock & q::
+{
+    Send("{Delete}")
 }
