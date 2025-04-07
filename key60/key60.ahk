@@ -22,6 +22,9 @@ SetCapsLockState "AlwaysOff"
 ; Handle CapsLock tap (without modifiers)
 *CapsLock::
 {
+    ; Always show indicator when CapsLock is pressed down
+    KeybLib.ShowIndicator()
+    
     ; Wait for the key to be released
     KeyWait "CapsLock"
     
@@ -36,7 +39,10 @@ SetCapsLockState "AlwaysOff"
         ; Single tap while in nav mode - exit nav mode
         KeybLib.ToggleNavMode()
     }
-    ; Otherwise do nothing, allowing CapsLock to be used as a modifier when held
+    
+    ; Always hide indicator when CapsLock is released
+    ; (NavMode will have its own status display)
+    KeybLib.HideIndicator()
 }
 
 ; Activate hotkeys when CapsLock is held OR NavMode is enabled
@@ -50,6 +56,8 @@ SetCapsLockState "AlwaysOff"
 
 ; Activate hotkeys when CapsLock is held OR NavMode is enabled
 #HotIf GetKeyState("CapsLock", "P") or KeybLib.NavModeEnabled
+    KeybLib.ShowIndicator()
+
     ; Arrow keys (WASD)
     *w::NavLib.MoveUp()
     *a::NavLib.MoveLeft()

@@ -9,9 +9,33 @@ class KeybLib {
     ; --- Mode Display Management ---
     static StatusBarVisible := false
     static StatusGui := Gui()
+
+    static IndicatorVisible := false  
+    static IndicatorGui := Gui()      
     
     ; --- Clipboard Handling ---
     static OldClipboard := ""
+    
+    static ShowIndicator() {
+        if (this.IndicatorVisible) {
+            this.IndicatorGui.Destroy()
+        }
+        
+        this.IndicatorGui := Gui("+AlwaysOnTop -Caption +ToolWindow")
+        this.IndicatorGui.BackColor := "00FF00" ; Bright green background
+        ; Instead of text, just show a small square
+        this.IndicatorGui.Show("NoActivate x10 y10 w15 h15")
+        
+        this.IndicatorVisible := true
+    }
+
+    ; Added a method to hide the indicator
+    static HideIndicator() {
+        if (this.IndicatorVisible) {
+            this.IndicatorGui.Destroy()
+            this.IndicatorVisible := false
+        }
+    }
     
     ; --- Mode Display Functions ---
     static ShowTooltip(message, duration := 1500) {
