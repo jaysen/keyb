@@ -89,10 +89,6 @@ SetCapsLockState "AlwaysOff"
     ; *r::TextLib.ChangeToLineEnd()       ; delete to line end
     ; *t::TextLib.UppercaseSelection()    ; uppercase selected text
 
-    *f::TextLib.SelectCurrentWord()     ; select current word
-    *g::TextLib.SelectLine()            ; select current line
-    *q::TextLib.SelectLine()            ; select current line
-
     ; *z::TextLib.ExpandSelectionByWordBack()
     ; *x::TextLib.ExpandSelectionByCharBack()
     ; *c::TextLib.ExpandSelectionByWordForward()  
@@ -102,6 +98,9 @@ SetCapsLockState "AlwaysOff"
     *r::TextLib.ExpandSelectionByWordForward()  
     *c::TextLib.ExpandSelectionByCharBack()
     *v::TextLib.ExpandSelectionByCharForward()
+    
+    *q::TextLib.ExpandSelectionByCharForward()   
+    *Tab::TextLib.ExpandSelectionByCharBack()  
 
     *x::TextLib.ExpandSelectionToLineEnd()     
     *z::TextLib.ExpandSelectionToLineStart()     
@@ -110,18 +109,69 @@ SetCapsLockState "AlwaysOff"
     $[::TextLib.ExpandSelectionByWordBack()
     $]::TextLib.ExpandSelectionByWordForward()
 
-    ; Block remaining unused keys
-    ;$q::Return
+    *f::TextLib.SelectCurrentWord()     
+    *g::TextLib.SelectLine()         
+    $\::TextLib.SelectLine()
+
+    ; --- Block all other letter keys ---
+    $b::Return
+    ;$c::Return
     ;$e::Return
-    ;$r::Return
-    ;$t::Return
-    $o::Return
-    ;$v::Return
-    ;$b::Return
+    ;$f::Return
+    ;$g::Return
+    ; h is Home
+    ; i is Up
+    ; j is Left
+    ; k is Down
+    ; l is Right
+    ;$;::Return
+    ; m is Ctrl+Down
     ;$n::Return
+    $o::Return
+    ; p is PgUp
+    ;$q::Return
+    ;$r::Return
+    ; s is Down
+    ;$t::Return
+    ; u is Ctrl+Up
+    ;$v::Return
+    ; w is Up
+    ;$x::Return  
+    ;$y::Return
+    ;$z::Return
+    
+    ; --- Block remaining symbols ---
+    ; ' is End
     ;$[::Return
     ;$]::Return
-    $\::TextLib.SelectLine()
+    ;$\::Return
+    $`::Return
+    ; , is Ctrl+Left
+    ; . is Ctrl+Right
+    ; / is PgDn
+    ; ; is End
+
+    ; --- Block other common keys ---
+    ; $Space::Return
+    ; $Tab::Return
+    ; $Enter::Return
+    ; $BackSpace::Return
+    ; $Delete::Return
+    ; $Escape::Return
+    
+    ; --- Block all other printable characters ---
+    $!::Return
+    $@::Return
+    $#::Return
+    $$::Return
+    $%::Return
+    $^::Return
+    $&::Return
+    $*::Return
+    $(::Return
+    $)::Return
+    $_::Return
+    $+::Return
 
 
     ; Function keys F1 - F12
@@ -151,7 +201,16 @@ CapsLock & Backspace::
     Send("{Delete}")
 }
 
+; map CapsLock+Delete to Delete (outside of NavMode) :
+; Quick delete to save on reaching for backspace.
 CapsLock & q::
 {
     Send("{Delete}")
+}
+
+; map CapsLock+Tab to Backspace (outside of NavMode) :
+; Quick backspace to save on reaching for backspace.
+CapsLock & Tab::
+{
+    Send("{BackSpace}")
 }
