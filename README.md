@@ -1,1 +1,1 @@
-.. working on faster navigation using autohotkey scripts
+Very silly scripting for quicker keyboard.
