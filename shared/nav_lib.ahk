@@ -25,7 +25,7 @@ class NavLib {
         this.sendKey("Down")
     }
 
-        ; --- Multi-line Movement ---
+    ; --- Multi-line Movement ---
     ; Moves the cursor up by specified number of lines
     static MoveUpLines(lineCount := 1) {
         Loop lineCount {
@@ -68,35 +68,22 @@ class NavLib {
     
     ; --- Word Navigation ---
     static MoveWordForward() {
-        if GetKeyState("Shift", "P")
-            Send "+^{Right}"
-        else
-            Send "^{Right}"
+        this.sendKey("Right", "ctrl")
     }
     
     static MoveWordBackward() {
-        if GetKeyState("Shift", "P")
-            Send "+^{Left}"
-        else
-            Send "^{Left}"
+        this.sendKey("Left", "ctrl")
     }
     
     ; --- Advanced Navigation ---
     static MoveToDocStart() {
-        if GetKeyState("Shift", "P")
-            Send "+^{Home}"
-        else
-            Send "^{Home}"
+        this.sendKey("Home", "ctrl")
     }
     
     static MoveToDocEnd() {
-        if GetKeyState("Shift", "P")
-            Send "+^{End}"
-        else
-            Send "^{End}"
+        this.sendKey("End", "ctrl")
     }
     
-
     ; --- Function Key Navigation ---
     static SendFunctionKey(number) {
         this.sendKey("F" number)
@@ -108,9 +95,6 @@ class NavLib {
     }
     
     static sendCtrlNav(direction) {
-        if GetKeyState("Shift", "P")
-            Send "^+{" direction "}"
-        else
-            Send "^{" direction "}"
+        this.sendKey(direction, "ctrl")
     }
 }
