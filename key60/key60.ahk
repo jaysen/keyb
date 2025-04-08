@@ -114,7 +114,7 @@ SetCapsLockState "AlwaysOff"
     $\::TextLib.SelectLine()
 
     ; --- Block all other letter keys ---
-    $b::Return
+    ;$b::Return
     ;$c::Return
     ;$e::Return
     ;$f::Return
@@ -214,3 +214,4 @@ CapsLock & Tab::
 {
     Send("{BackSpace}")
 }
+
