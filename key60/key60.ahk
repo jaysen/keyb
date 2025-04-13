@@ -4,10 +4,10 @@
 ; --- CapsLock Modifier with Toggle Navigation Mode ---
 
 ; Include the shared library
-#Include %A_ScriptDir%\..\shared\keyb_lib.ahk
-#Include %A_ScriptDir%\..\shared\text_lib.ahk
-#Include %A_ScriptDir%\..\shared\nav_lib.ahk
-#Include %A_ScriptDir%\..\shared\text_lib.ahk
+#Include ..\shared\keyb_lib.ahk
+#Include ..\shared\text_lib.ahk
+#Include ..\shared\nav_lib.ahk
+#Include ..\shared\text_lib.ahk
 #SingleInstance Force
 
 ; Prevent CapsLock from toggling
