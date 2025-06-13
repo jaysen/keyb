@@ -306,16 +306,16 @@ global HybridVimEnabled := false
     
     ; Actions on selection
     y:: {
-        VimLib.SaveClipboard()
+        TextLib.SaveClipboard()
         Send("^c")
         VimLib.SwitchToNormal()
-        VimLib.RestoreClipboard()
+        TextLib.RestoreClipboard()
     }
     d:: {
-        VimLib.SaveClipboard()
+        TextLib.SaveClipboard()
         Send("^x")
         VimLib.SwitchToNormal()
-        VimLib.RestoreClipboard()
+        TextLib.RestoreClipboard()
     }
     x:: {
         Send("{Delete}")

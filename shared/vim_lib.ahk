@@ -57,7 +57,7 @@ class VimLib {
         KeybLib.SaveClipboard()
         NavLib.MoveToLineStart()
         Send "+{End}^x"
-        KeybLib.RestoreClipboard()
+        TextLib.RestoreClipboard()
     }
     
     static YankLine() {
