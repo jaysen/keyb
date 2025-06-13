@@ -4,10 +4,10 @@
 ; --- CapsLock Modifier with Toggle Navigation Mode ---
 
 ; Include the shared library
-#Include %A_ScriptDir%\..\shared\keyb_lib.ahk
-#Include %A_ScriptDir%\..\shared\text_lib.ahk
-#Include %A_ScriptDir%\..\shared\nav_lib.ahk
-#Include %A_ScriptDir%\..\shared\text_lib.ahk
+#Include ..\shared\keyb_lib.ahk
+#Include ..\shared\text_lib.ahk
+#Include ..\shared\nav_lib.ahk
+#Include ..\shared\text_lib.ahk
 #SingleInstance Force
 
 ; Prevent CapsLock from toggling
@@ -64,7 +64,8 @@ SetCapsLockState "AlwaysOff"
 
     ; Home, End, PageUp, PageDown
     *h::NavLib.MoveToLineStart()
-    `;::NavLib.MoveToLineEnd()
+    `;::TextLib.SelectLine()
+    *'::NavLib.MoveToLineEnd()     
     *p::NavLib.PageUp()
     */::NavLib.PageDown()
 
@@ -104,7 +105,7 @@ SetCapsLockState "AlwaysOff"
 
     *x::TextLib.ExpandSelectionToLineEnd()     
     *z::TextLib.ExpandSelectionToLineStart()     
-    *'::TextLib.ExpandSelectionToLineEnd()     
+
   
     $[::TextLib.ExpandSelectionByWordBack()
     $]::TextLib.ExpandSelectionByWordForward()
