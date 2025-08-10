@@ -33,30 +33,88 @@ Provide simple keyboard shortcuts for navigation and text selection without usin
 
 ## Keymap (universal)
 
-| Chord             | Action                      |
-| ----------------- | --------------------------- |
-| **Caps + W / E / I** | Up                        |
-| **Caps + A / J**  | Left                        |
-| **Caps + S / K**  | Down                        |
-| **Caps + D / L**  | Right                       |
-| **Caps + Q / Tab**| Delete / Backspace          |
-| **Caps + H**      | Ctrl+Left                   |
-| **Caps + ; / '**  | Ctrl+Right                  |
-| **Caps + U / O**  | Home / End                  |
-| **Caps + Y / P**  | Shift+Home / Shift+End      |
-| **Caps + N**      | Shift+Ctrl+Left             |
-| **Caps + M**      | Shift+Left                  |
-| **Caps + .**      | Shift+Right                 |
-| **Caps + /**      | Shift+Ctrl+Right            |
-| **Caps + Z / X**  | Shift+Home / Shift+End      |
-| **Caps + R / F**  | Shift+Up / Shift+Down       |
-| **Caps + T / G**  | Shift+PageUp / Shift+PageDown |
-| **Caps + 1..0 / - / =** | F1..F12                |
+### **Navigation Arrows - Left Hand (WASD)**
+| Chord          | Function |
+| -------------- | -------- |
+| **Caps + W / E** | Move cursor up | 
+| **Caps + A**     | Move cursor left |
+| **Caps + S**     | Move cursor down |
+| **Caps + D**     | Move cursor right |
+
+---
+
+### **Navigation Arrows - Right Hand (IJKL)**
+| Chord          | Function |
+| -------------- | -------- |
+| **Caps + I** | Move cursor up |
+| **Caps + J** | Move cursor left |
+| **Caps + K** | Move cursor down |
+| **Caps + L** | Move cursor right |
+
+---
+
+### **Navigation by Word - Right Hand Centre**
+| Chord             | Function                  |
+| ----------------- | ------------------------- |
+| **Caps + H**      | Move cursor by word (backward) |
+| **Caps + ;**      | Move cursor by word (forward)  |
+| **Caps + '**      | Move cursor by word (forward)  |
+
+---
+
+### **Selection by Line - Right Hand Top**
+| Chord             | Function                     |
+| ----------------- | ---------------------------- |
+| **Caps + U**      | Move cursor to start of line  |
+| **Caps + O**      | Move cursor to end of line    |
+| **Caps + Y**      | Expand selection to start of line |
+| **Caps + P**      | Expand selection to end of line   |
+HomeZone Navigation & Selection
+---
+
+### **Selection by Chars and Words - Right Hand Bottom**
+| Chord             | Function                               |
+| ----------------- | -------------------------------------- |
+| **Caps + N**      | Expand selection by word (backward)    |
+| **Caps + M**      | Expand selection by character (left)   |
+| **Caps + .**      | Expand selection by character (right)  |
+| **Caps + /**      | Expand selection by word (forward)     |
+
+---
+
+### **Selection by Home/End - Left Hand Bottom**
+| Chord             | Function                     |
+| ----------------- | ---------------------------- |
+| **Caps + Z**      | Expand selection to start of line |
+| **Caps + X**      | Expand selection to end of line   |
+
+---
+
+### **Selection Up/Down - Left Hand Centre and Top**
+| Chord             | Function                          |
+| ----------------- | --------------------------------- |
+| **Caps + R**      | Expand selection up one line      |
+| **Caps + F**      | Expand selection down one line    |
+| **Caps + T**      | Expand selection up one page      |
+| **Caps + G**      | Expand selection down one page    |
+
+---
+
+### **Delete/Backspace - Left Hand Top**
+| Chord             | Function       |
+| ----------------- | -------------- |
+| **Caps + Q**      | Delete character forward |
+| **Caps + Tab**    | Delete character backward (Backspace) |
+
+---
+
+### **Function Keys**
+| Chord             | Function |
+| ----------------- | -------- |
+| **Caps + 1..0, -, =** | F1..F12 |
 
 ---
 
 ## License
 
 See [LICENSE.txt](LICENSE.txt) for details. This project is licensed under the **GPL-3.0-or-later**.
-
-
