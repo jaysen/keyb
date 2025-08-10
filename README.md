@@ -1,4 +1,4 @@
-# keyb — Home-row navigation and text selection (AHK on Windows, keyd on Linux)
+# keyb - Universal Near-Home-Row Navigation & Selection Keybindings (AHK on Windows, keyd on Linux)
 
 ---
 
