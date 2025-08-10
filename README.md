@@ -17,13 +17,13 @@ Provide simple keyboard shortcuts for navigation and text selection without usin
 * **AutoHotkey v2** scripts.
 * Libraries:
 
-  * `nav_lib.ahk` – movement
-  * `text_lib.ahk` – text editing
-  * `ui_lib.ahk` – modes/layers, tooltips
+  * `nav_lib.ahk` - movement
+  * `text_lib.ahk` - text editing
+  * `ui_lib.ahk` - modes/layers, tooltips
 
 ## Linux
 
-* Using keyd for low‑latency, system‑wide remaps.
+* Using keyd for low-latency, system-wide remaps.
 
 ## Multiplatform
 
@@ -33,21 +33,30 @@ Provide simple keyboard shortcuts for navigation and text selection without usin
 
 ## Keymap (universal)
 
-| Chord           | Action                      |
-| --------------- | --------------------------- |
-| Caps + W/A/S/D  | ↑ / ← / ↓ / →               |
-| Caps + I/J/K/L  | ↑ / ← / ↓ / → (alt cluster) |
-| Caps + H / '    | Home / End                  |
-| Caps + Q / Tab  | Delete / Backspace          |
-| Caps + Y / U    | Ctrl+← / Ctrl+→             |
-| Caps + N / M    | Shift+Ctrl+← / Shift+Ctrl+→ |
-| Caps + X        | Shift+End                   |
-| Caps + , / .    | Shift+← / Shift+→           |
-| Caps + P / /    | Shift+↑ / Shift+↓           |
-| Caps + 1..0/-/= | F1..F12                     |
+| Chord             | Action                      |
+| ----------------- | --------------------------- |
+| **Caps + W / E / I** | Up                        |
+| **Caps + A / J**  | Left                        |
+| **Caps + S / K**  | Down                        |
+| **Caps + D / L**  | Right                       |
+| **Caps + Q / Tab**| Delete / Backspace          |
+| **Caps + H**      | Ctrl+Left                   |
+| **Caps + ; / '**  | Ctrl+Right                  |
+| **Caps + U / O**  | Home / End                  |
+| **Caps + Y / P**  | Shift+Home / Shift+End      |
+| **Caps + N**      | Shift+Ctrl+Left             |
+| **Caps + M**      | Shift+Left                  |
+| **Caps + .**      | Shift+Right                 |
+| **Caps + /**      | Shift+Ctrl+Right            |
+| **Caps + Z / X**  | Shift+Home / Shift+End      |
+| **Caps + R / F**  | Shift+Up / Shift+Down       |
+| **Caps + T / G**  | Shift+PageUp / Shift+PageDown |
+| **Caps + 1..0 / - / =** | F1..F12                |
 
 ---
 
 ## License
 
-See [LICENSE.txt](LICENSE.txt) for details. This project is licensed under the **GPL‑3.0‑or‑later**.
+See [LICENSE.txt](LICENSE.txt) for details. This project is licensed under the **GPL-3.0-or-later**.
+
+
