@@ -15,19 +15,23 @@ Provide simple keyboard shortcuts for navigation and text selection without usin
 ## Windows
 
 * **AutoHotkey v2** scripts.
-* Libraries:
-
-  * `nav_lib.ahk` - movement
-  * `text_lib.ahk` - text editing
-  * `ui_lib.ahk` - modes/layers, tooltips
+* ahk
+  * universal
+    * default.ahk 
+  * shared
+    * `nav_lib.ahk` - movement
+    * `text_lib.ahk` - text editing
+    * `ui_lib.ahk` - modes/layers, tooltips
 
 ## Linux
 
 * Using keyd for low-latency, system-wide remaps.
+* keyd
+  * default.conf 
 
 ## Multiplatform
 
-* Planning to use [Kanata](https://github.com/jtroo/kanata)
+* Planning to use [Kanata](https://github.com/jtroo/kanata) 
 
 ---
 
