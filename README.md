@@ -1,4 +1,6 @@
-# keyb - Universal Near-Home-Row Navigation & Selection Keybindings (AHK on Windows, keyd on Linux)
+# keyb - very silly scripting for a faster keyboard (linux & windows) 
+
+Universal Near-Home-Row Navigation & Selection Keybindings (AHK on Windows, keyd on Linux)
 
 ---
 
