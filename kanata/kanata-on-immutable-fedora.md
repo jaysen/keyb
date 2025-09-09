@@ -3,6 +3,7 @@
 This guide provides an enhanced security approach to running Kanata keyboard remapper on Immutable Fedora using container isolation (Distrobox/Podman) combined with a hardened systemd service and dedicated user.
 
 ## Table of Contents
+
 - [Kanata on Immutable Fedora: Containerized Setup with Distrobox/Podman](#kanata-on-immutable-fedora-containerized-setup-with-distroboxpodman)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
@@ -67,7 +68,7 @@ This approach provides **defense-in-depth** security through multiple isolation 
 
 ## Architecture Overview
 
-```
+```ascii
 ┌─────────────────────────────────────────┐
 │         Your User Session               │
 │     (Completely isolated)               │
@@ -78,7 +79,7 @@ This approach provides **defense-in-depth** security through multiple isolation 
 ┌─────────────────────────────────────────┐
 │      Dedicated 'kanata-svc' User        │
 │   • No shell (/bin/false)               │
-│   • No home directory                    │
+│   • No home directory                   │
 │   • Only input/uinput groups            │
 └─────────────────────────────────────────┘
                     ↓
@@ -660,6 +661,7 @@ sudo -u kanata-svc podman exec kanata-service \
 ### Attack Surface Analysis
 
 **What's Protected:**
+
 - User data and home directories (completely inaccessible)
 - System files (read-only access)
 - Network access (can be completely disabled)
@@ -667,6 +669,7 @@ sudo -u kanata-svc podman exec kanata-service \
 - Privilege escalation (multiple prevention mechanisms)
 
 **Remaining Risks:**
+
 - Keylogging capability (inherent to functionality)
 - Input device access (required for operation)
 - Container escape vulnerabilities (mitigated by updates)
@@ -675,6 +678,7 @@ sudo -u kanata-svc podman exec kanata-service \
 ### Security Best Practices
 
 1. **Regular Updates**
+
    ```bash
    # Update container packages
    sudo -u kanata-svc distrobox upgrade kanata-container
@@ -685,6 +689,7 @@ sudo -u kanata-svc podman exec kanata-service \
    ```
 
 2. **Audit Logs**
+
    ```bash
    # Check for unusual activity
    sudo journalctl -u kanata-container.service --since="24 hours ago" \
@@ -692,6 +697,7 @@ sudo -u kanata-svc podman exec kanata-service \
    ```
 
 3. **Monitor Resources**
+
    ```bash
    # Check container resource usage
    sudo -u kanata-svc podman stats --no-stream
